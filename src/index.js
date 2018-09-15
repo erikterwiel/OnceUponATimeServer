@@ -14,8 +14,8 @@ server.listen(port);
 
 app.use(bodyParser.json());
 
-app.post("/", (req, res) => {
-  console.log(req.body);
+app.post("/", (req) => {
+  io.sockets.emit("newCommand", { command: req.body.command });
 });
 
 io.sockets.on("connection", (socket) => {
@@ -26,10 +26,6 @@ io.sockets.on("connection", (socket) => {
     connections.splice(connections.indexOf(socket), 1);
     console.log(`Disconnected: ${connections.length} sockets connected`);
   });
-
-  socket.on("sendCommand", (command) => {
-    io.sockets.emit("newCommand", { command })
-  })
 });
 
 console.log(`AidsServer running on port ${port}`);
