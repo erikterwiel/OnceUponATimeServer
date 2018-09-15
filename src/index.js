@@ -14,6 +14,8 @@ io.sockets.on("connection", (socket) => {
   connections.push(socket);
   console.log(`Connected: ${connections.length} sockets connected`);
 
+  io.sockets.emit("new connection !!!!");
+
   socket.on("disconnect", () => {
     connections.splice(connections.indexOf(socket), 1);
     console.log(`Disconnected: ${connections.length} sockets connected`);
