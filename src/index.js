@@ -11,6 +11,10 @@ const port = process.env.PORT || 3003;
 
 server.listen(port);
 
+app.get("/", (req, res) => {
+  console.log(req.body);
+});
+
 io.sockets.on("connection", (socket) => {
   connections.push(socket);
   console.log(`Connected: ${connections.length} sockets connected`);
