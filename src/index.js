@@ -1,5 +1,6 @@
 const express = require("express");
 const http = require("http");
+const bodyParser = require("body-parser");
 const socket = require("socket.io");
 
 const app = express();
@@ -10,6 +11,8 @@ const connections = [];
 const port = process.env.PORT || 3003;
 
 server.listen(port);
+
+app.use(bodyParser.json());
 
 app.post("/", (req, res) => {
   console.log(req.body);
