@@ -7,8 +7,9 @@ const server = http.createServer(app);
 const io = socket.listen(server);
 
 const connections = [];
+const port = process.env.PORT || 3003;
 
-server.listen(process.env.PORT || 5000);
+server.listen(port);
 
 io.sockets.on("connection", (socket) => {
   connections.push(socket);
@@ -26,4 +27,4 @@ io.sockets.on("connection", (socket) => {
   })
 });
 
-console.log("AidsServer running on port 5000");
+console.log(`AidsServer running on port ${port}`);
