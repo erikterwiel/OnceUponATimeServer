@@ -11,7 +11,7 @@ const port = process.env.PORT || 3003;
 
 server.listen(port);
 
-app.get("/", (req, res) => {
+app.post("/", (req, res) => {
   console.log(req.body);
 });
 
